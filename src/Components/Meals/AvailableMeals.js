@@ -14,10 +14,10 @@ const AvailableMeals = (props) => {
         "https://food-order-app-c02a2-default-rtdb.asia-southeast1.firebasedatabase.app//meals.json"
       );
 
-      // if(!response.ok)
-      // {
-      //   return throw new
-      // }
+      if (!response.ok) {
+        setIsLoading(false);
+        setHasError(true);
+      }
 
       const responseData = await response.json();
 
@@ -43,6 +43,13 @@ const AvailableMeals = (props) => {
     return (
       <section>
         <p>....loading</p>
+      </section>
+    );
+  }
+  if (hasError) {
+    return (
+      <section>
+        <p>....Something went wrong</p>
       </section>
     );
   }
